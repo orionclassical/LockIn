@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'Hammersmith One';
+    src: url('./fonts/HammersmithOne-Regular.ttf');
+}
+
+.label, .button{
+    -fx-font-family: 'Hammersmith One';
+    -fx-text-fill: #0F1C36;
+}
+
+.white-bg{
+    -fx-background-color: #F2F2F2;
+    -fx-border-color: #0F1C36;
+}
+
+.dark-bg{
+    -fx-border-color: #0F1C36;
+}
+
+.aligningtext{
+    -fx-alignment: center;
+}
+/* ------------------------ Settings Design ------------------------ */
+.button-color-settings{  
+    -fx-background-color: #F2F2F2;
+    -fx-text-fill: #0F1C36;
+    -fx-cursor: hand;
+    transition: 0.1s;
+}
+
+.button-color-settings:hover{  
+    -fx-background-color: #4781FF;
+    -fx-text-fill: #F2F2F2;
+    -fx-cursor: hand;
+    transition: 0.1s;
+}
+
+.button-color-mainColor{
+    -fx-background-color: #4781FF;
+    -fx-text-fill: #F2F2F2;
+    -fx-cursor: hand;
+    transition: 0.2s;
+}
+
+.button-color-mainColor:hover{
+    -fx-background-color: #3b70e4;
+    -fx-cursor: hand;
+    -fx-text-fill: #F2F2F2;
+    transition: 0.2s;
+}
+/* ------------------------------------------------------------------- */

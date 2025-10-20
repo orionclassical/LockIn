@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Hammersmith One';
+    src: url('./fonts/HammersmithOne-Regular.ttf');
+}
+
+.label, .text-field, .password-field, .check-box, .button, .hyperlink{
+    -fx-font-family: 'Hammersmith One';
+}
+
+.blue-bg{
+    -fx-background-color: #0F1C36;
+}
+
+.btn-bgcolor{
+    -fx-background-color: #4781FF;
+    -fx-text-fill: #F2F2F2;
+    -fx-border-radius: 10px;
+    -fx-cursor: hand;
+    transition: 0.2s;
+}
+
+.btn-bgcolor:hover{
+    -fx-background-color: #3b70e4;
+    -fx-text-fill: #F2F2F2;
+    transition: 0.2s;
+}
+
+.hyperlink-color{
+    -fx-text-fill: #6582F4;
+    transition: 0.2s;
+}
+
+.hyperlink-color:hover{
+    -fx-text-fill: #F2F2F2;
+    transition: 0.2s;
+}
+
+.field-color{
+    -fx-background-color: #0F1C36;
+    -fx-text-fill: #F2F2F2;
+    -fx-border-color: #F2F2F2;
+    -fx-border-radius: 10px;
+}
+
+.label{
+    -fx-text-fill: #F2F2F2;
+}
+
+
+
