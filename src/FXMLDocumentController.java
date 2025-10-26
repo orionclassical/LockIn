@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -133,53 +132,60 @@ public class FXMLDocumentController {
         }
     }
     
-    public void signInAccount(){
+    public void signInAccount() {
         String email = login_email.getText();
         String password = login_password.getText();
 
-        if(email.isEmpty() && password.isEmpty()){
+        if (email.isEmpty() && password.isEmpty()) {
             alert.errorAlert("Fill in your email and password");
-        }else if(email.isEmpty()){
+            return;
+        } else if (email.isEmpty()) {
             alert.errorAlert("Enter an email");
-        }else if(password.isEmpty()){
+            return;
+        } else if (password.isEmpty()) {
             alert.errorAlert("Enter a password");
-        }else{
-            String checkLogin = "SELECT * FROM users WHERE email = ? AND password = ?";
+            return;
+        }
 
-            connect = DatabaseConnection.connectDB();
+        String checkLogin = "SELECT * FROM users WHERE email = ? AND password = ?";
 
-            try {
-                prepare = connect.prepareStatement(checkLogin);
-                prepare.setString(1, email);
-                prepare.setString(2, password);
-                result = prepare.executeQuery();
+        try (Connection connect = DatabaseConnection.connectDB();
+            PreparedStatement prepare = connect.prepareStatement(checkLogin)) {
 
-                if (result.next()) {
-                    LoggedInUser.email = email;
+            prepare.setString(1, email);
+            prepare.setString(2, password);
+            ResultSet result = prepare.executeQuery();
 
-                    Parent root;
-                    try {
-                        root = FXMLLoader.load(getClass().getResource("SettingsFormDocument.fxml"));
-                        Stage stage = new Stage();
+            if (result.next()) {
+                int userId = result.getInt("id");
+                String firstName = result.getString("first_name");
+                String lastName = result.getString("last_name");
 
-                        stage.setTitle("LockIn | Settings");
-                        Image image = new Image("img/LinLogo.png");
-                        stage.getIcons().add(image);
-                        stage.setScene(new Scene(root));
-                        stage.show();
+                LoggedInUser.setUser(firstName, lastName, email);
+                LoggedInUser.setUserId(userId);
 
-                        if(!login_rememberMe.isSelected()){
-                            login_email.setText("");
-                            login_password.setText("");
-                        }
-                        ChangeWindow.loginStage = (Stage) login_signUpBtn.getScene().getWindow(); 
-                        ChangeWindow.loginStage.hide();
-                    } catch (IOException e) {}
+                Parent root = FXMLLoader.load(getClass().getResource("MainFormDocument.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("LockIn | Settings");
+                stage.getIcons().add(new Image("img/LinLogo.png"));
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.show();
 
-                } else {
-                    alert.errorAlert("Incorrect email or password!");
+                if (!login_rememberMe.isSelected()) {
+                    login_email.setText("");
+                    login_password.setText("");
                 }
-            } catch (Exception e) {e.printStackTrace();}
+
+                ChangeWindow.loginStage = (Stage) login_signUpBtn.getScene().getWindow();
+                ChangeWindow.loginStage.hide();
+
+            } else {
+                alert.errorAlert("Incorrect email or password!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

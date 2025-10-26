@@ -11,6 +11,11 @@
     -fx-text-fill: #F2F2F2;
 }
 
+.calendar-date{
+    -fx-text-fill: #F2F2F2;
+    text-align: center;
+}
+
 .blue-txt{
     -fx-text-fill: #4781FF;
 }
@@ -39,4 +44,6 @@
     -fx-border-radius: 10px;
     transition: 0.2s;
 }
+
+
 

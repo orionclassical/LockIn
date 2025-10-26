@@ -21,8 +21,8 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="login_email" layoutX="66.0" layoutY="187.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="field-color" stylesheets="@design/designLoginAndRegister.css" />
-                  <PasswordField fx:id="login_password" layoutX="65.0" layoutY="241.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" styleClass="field-color" stylesheets="@design/designLoginAndRegister.css" />
+                  <TextField fx:id="login_email" layoutX="66.0" layoutY="187.0" onAction="#signInAccount" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="field-color" stylesheets="@design/designLoginAndRegister.css" />
+                  <PasswordField fx:id="login_password" layoutX="65.0" layoutY="241.0" onAction="#signInAccount" prefHeight="35.0" prefWidth="330.0" promptText="Password" styleClass="field-color" stylesheets="@design/designLoginAndRegister.css" />
                   <CheckBox fx:id="login_rememberMe" layoutX="65.0" layoutY="297.0" mnemonicParsing="false" styleClass="label" stylesheets="@design/designLoginAndRegister.css" text="Remember Me" textFill="#4e3b33" />
                   <Button fx:id="login_signUpBtn" layoutX="65.0" layoutY="336.0" mnemonicParsing="false" onAction="#signInAccount" prefHeight="34.0" prefWidth="330.0" styleClass="btn-bgcolor" stylesheets="@design/designLoginAndRegister.css" text="Sign Up" />
                   <Label layoutX="65.0" layoutY="386.0" text="Dont have account yet?" textFill="#4e3b33" />

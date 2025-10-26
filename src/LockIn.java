@@ -19,12 +19,17 @@ public class LockIn extends Application {
             primaryStage.setTitle("LockIn");
 
             Image image = new Image("img/LinLogo.png");
+            primaryStage.setFullScreen(false);
+            primaryStage.setResizable(false);
+            primaryStage.setFullScreenExitKeyCombination(javafx.scene.input.KeyCombination.NO_MATCH);
+            primaryStage.fullScreenProperty().addListener((obs, oldVal, newVal) -> {
+                if (newVal) primaryStage.setFullScreen(false);
+            });
             primaryStage.getIcons().add(image);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {}
     }
-
      public static void main(String[] args) {
         launch(args);
     }

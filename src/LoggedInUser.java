@@ -2,11 +2,20 @@ public class LoggedInUser {
     public static String firstName;
     public static String lastName;
     public static String email;
+    public static int userId;
     // --- SETTERS ---
     public static void setUser(String fName, String lName, String userEmail) {
         firstName = fName;
         lastName = lName;
         email = userEmail;
+    }
+
+    public static int getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(int userId) {
+        LoggedInUser.userId = userId;
     }
 
     public static String getFirstName() {
