@@ -6,17 +6,32 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Current File",
+            "name": "Main",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "Main",
+            "projectName": "LockIn_80e7c378",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml -cp \"lib/mysql-connector-j-9.5.0.jar\""
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "main.java.window.Main",
+            "projectName": "LockIn_80e7c378"
         },
         {
             "type": "java",
             "name": "App",
             "request": "launch",
-            "mainClass": "LockIn",
-            "projectName": "LockIn_1c654a85",
+            "mainClass": "Main",
+            "projectName": "LockIn_80e7c378",
             "vmArgs": "--module-path \"C:/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
         }
     ]
 }

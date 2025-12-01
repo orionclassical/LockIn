@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.window.controllers.LoginAndSignUp">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane fx:id="login_form" layoutX="75.0" layoutY="75.0" prefHeight="550.0" prefWidth="450.0" styleClass="blue-bg" stylesheets="@../css/global.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="188.0" layoutY="124.0" text="Login" textFill="#36241c">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="login_email" layoutX="66.0" layoutY="187.0" onAction="#signInAccount" prefHeight="35.0" prefWidth="330.0" promptText="Email" stylesheets="@../css/global.css">
+                     <styleClass>
+                        <String fx:value="field-color" />
+                        <String fx:value="field-radius" />
+                     </styleClass>
+                     <font>
+                        <Font size="10.0" />
+                     </font></TextField>
+                  <PasswordField fx:id="login_password" layoutX="65.0" layoutY="241.0" onAction="#signInAccount" prefHeight="35.0" prefWidth="330.0" promptText="Password" styleClass="field-color" stylesheets="@../css/global.css">
+                     <font>
+                        <Font size="10.0" />
+                     </font></PasswordField>
+                  <CheckBox fx:id="login_rememberMe" layoutX="65.0" layoutY="297.0" mnemonicParsing="false" styleClass="label" text="Remember Me" textFill="#4e3b33" />
+                  <Button fx:id="login_signUpBtn" layoutX="65.0" layoutY="336.0" mnemonicParsing="false" onAction="#signInAccount" prefHeight="34.0" prefWidth="330.0" styleClass="btn-bgcolor" text="Log In" />
+                  <Label layoutX="65.0" layoutY="386.0" text="Dont have account yet?" textFill="#4e3b33" />
+                  <Hyperlink fx:id="login_createOne" layoutX="200.0" layoutY="383.0" onAction="#switchForm" styleClass="hyperlink-color" text="Create One" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="signup_form" prefHeight="550.0" prefWidth="450.0" styleClass="blue-bg" stylesheets="@../css/global.css" visible="false">
+               <children>
+                  <Label layoutX="172.0" layoutY="120.0" text="Sign up" textFill="#36241c">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="signup_firstName" layoutX="65.0" layoutY="180.0" prefHeight="34.0" prefWidth="154.0" promptText="First Name" styleClass="field-color" />
+                  <TextField fx:id="signup_lastName" layoutX="227.0" layoutY="180.0" prefHeight="34.0" prefWidth="168.0" promptText="Last Name" styleClass="field-color" />
+                  <TextField fx:id="signup_email" layoutX="65.0" layoutY="224.0" prefHeight="34.0" prefWidth="330.0" promptText="Email" styleClass="field-color" />
+                  <PasswordField fx:id="signup_password" layoutX="64.0" layoutY="269.0" prefHeight="34.0" prefWidth="330.0" promptText="Password" styleClass="field-color" />
+                  <PasswordField fx:id="signup_confirmPassword" layoutX="64.0" layoutY="313.0" prefHeight="34.0" prefWidth="330.0" promptText="Confirm Password" styleClass="field-color" />
+                  <CheckBox fx:id="signup_termsAndConditions" layoutX="64.0" layoutY="357.0" mnemonicParsing="false" styleClass="label" text="Agree to terms and condtions" textFill="#4e3b33" />
+                  <Button fx:id="signup_createAccountBtn" layoutX="64.0" layoutY="387.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="34.0" prefWidth="330.0" styleClass="btn-bgcolor" text="Create Account" />
+                  <Label layoutX="64.0" layoutY="437.0" text="Already have an account?" textFill="#4e3b33" />
+                  <Hyperlink fx:id="signup_signInHere" layoutX="209.0" layoutY="433.0" onAction="#switchForm" styleClass="hyperlink-color" text="Sign in" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
