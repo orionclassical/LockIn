@@ -445,6 +445,10 @@ public class MainDocument implements Initializable{
     public void backToCalendar(ActionEvent event) {
         statistics_dateTaskWindow.setVisible(false);
         statistics_dateWindow.setVisible(true);
+        statistics_creatingTask_nameOfTask.clear();
+        statistics_creatingTask_selectCategory.setValue("Personal");
+        statistics_creatingTask_setNotification.setValue("None");
+        loadCurrentMonth();
         loadStatisticsTimesCompleted();
         loadStatisticsAverageDaily();
         loadStatisticsCompletionRate();
@@ -517,7 +521,6 @@ public class MainDocument implements Initializable{
             Task newTask = new Task(taskName, category, "Pending", notifications);
             notificationTimer(newTask);
 
-
             today_main.setVisible(true);
             hidePane(today_createTask);
             today_creatingTask_nameOfTask.clear();
@@ -531,6 +534,7 @@ public class MainDocument implements Initializable{
     private void handleStatisticsTaskCreation() {
         String taskName = statistics_creatingTask_nameOfTask.getText();
         String category = statistics_creatingTask_selectCategory.getValue();
+        String notif = statistics_creatingTask_setNotification.getValue();
         String email = LoggedInUser.getEmail();
 
         if (selectedDate == null) {
@@ -545,6 +549,8 @@ public class MainDocument implements Initializable{
 
         if (category == null || category.isEmpty()) category = "Personal";
 
+        if (notif == null || category.isEmpty()) category = "None";
+
         try {
             int userId = getUserId(email);
             if (userId == -1) {
@@ -552,11 +558,12 @@ public class MainDocument implements Initializable{
                 return;
             }
 
-            insertTask(userId, taskName, category, null, selectedDate);
+            insertTask(userId, taskName, category, notif, selectedDate);
 
             hidePane(statistics_createTask);
             statistics_creatingTask_nameOfTask.clear();
             statistics_creatingTask_selectCategory.setValue("Personal");
+            statistics_creatingTask_setNotification.setValue("None");
             loadStatisticsTasks(selectedDate);
         } catch (Exception e) {
             e.printStackTrace();
@@ -599,7 +606,6 @@ public class MainDocument implements Initializable{
             }
         );
 
-        // Set visibility for all windows and highlight the active button
         for (Map.Entry<Button, AnchorPane> entry : windowMap.entrySet()) {
             boolean active = source == entry.getKey();
             entry.getValue().setVisible(active);
@@ -629,11 +635,11 @@ public class MainDocument implements Initializable{
             String category = today_editingTask_selectCategory.getValue();
             String notifications = today_editingTask_setNotification.getValue();
 
+            taskEditor.updateTask(task, title, category, notifications);
+
             if (!notifications.equals(task.getTaskNotification()) && "Pending".equals(task.getStatus())) {
                 notificationTimer(task);
             }
-
-            taskEditor.updateTask(task, title, category, notifications);
 
             today_editTask.setVisible(false);
             today_editingTask_nameOfTask.clear();
